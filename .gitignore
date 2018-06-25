@@ -8,7 +8,6 @@ npm-debug.log.*
 .sass-cache/
 /cache/*
 download/*
-/img/*
 /log/*
 /upload/*
 vendor/*
@@ -45,7 +44,6 @@ app/config/config.php
 modules/config_*.xml
 modules/ps_imageslider/images/*
 !modules/ps_imageslider/images/index.php
-modules/ps_banner/img/*
 !modules/ps_banner/img/index.php
 
 !override/*
@@ -86,7 +84,6 @@ themes/default-bootstrap/modules/*/mails/*
 /app/test/cache/*
 !app/test/cache/.gitkeep
 /app/config/parameters.yml
-/app/config/parameters.php
 /app/logs/*
 !app/logs/.gitkeep
 /app/phpunit.xml
