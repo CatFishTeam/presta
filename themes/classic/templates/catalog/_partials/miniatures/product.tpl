@@ -63,6 +63,11 @@
               {hook h='displayProductPriceBlock' product=$product type='unit_price'}
 
               {hook h='displayProductPriceBlock' product=$product type='weight'}
+
+                {if isset($product.commentsproduct)}
+                    <p>{l s="Average grade" mod='commentsproduct'}: {$product.commentsproduct.grade_avg|round:2}</p>
+                    <p>{l s="Number of comments" mod='commentsproduct'}: {$product.commentsproduct.nb_comments}</p>
+                {/if}
             </div>
           {/if}
         {/block}

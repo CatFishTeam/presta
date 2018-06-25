@@ -15,8 +15,8 @@ class __TwigTemplate_294b883bd95d18e993030d14d9255aeb82051a02ab4075ef819589735e6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_247f7024de07a18ccb01841b73fe1694f2c3519e081ab4b63f9c303e244a3837 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_247f7024de07a18ccb01841b73fe1694f2c3519e081ab4b63f9c303e244a3837->enter($__internal_247f7024de07a18ccb01841b73fe1694f2c3519e081ab4b63f9c303e244a3837_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PrestaShopBundle:Admin/Module/Includes:sorting.html.twig"));
+        $__internal_fb742ce3d001322365ceaf3fef4c4be58149d8632869e2b19983b1ccaebdc0fc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_fb742ce3d001322365ceaf3fef4c4be58149d8632869e2b19983b1ccaebdc0fc->enter($__internal_fb742ce3d001322365ceaf3fef4c4be58149d8632869e2b19983b1ccaebdc0fc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "PrestaShopBundle:Admin/Module/Includes:sorting.html.twig"));
 
         // line 25
         echo "<div class=\"module-sorting-menu\">
@@ -69,7 +69,7 @@ class __TwigTemplate_294b883bd95d18e993030d14d9255aeb82051a02ab4075ef819589735e6
 </div>
 ";
         
-        $__internal_247f7024de07a18ccb01841b73fe1694f2c3519e081ab4b63f9c303e244a3837->leave($__internal_247f7024de07a18ccb01841b73fe1694f2c3519e081ab4b63f9c303e244a3837_prof);
+        $__internal_fb742ce3d001322365ceaf3fef4c4be58149d8632869e2b19983b1ccaebdc0fc->leave($__internal_fb742ce3d001322365ceaf3fef4c4be58149d8632869e2b19983b1ccaebdc0fc_prof);
 
     }
 

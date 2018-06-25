@@ -4,14 +4,14 @@
 		<h3 class="page-product-heading">{$title}</h3>
 
 		<p>
-			<strong>{l s="Average" mod='commentsproduct_comment'}: {$average|round:2}</strong>
+			<strong>{l s="Average" mod='commentsproduct'}: {$average|round:2}</strong>
 		</p>
 
 		{foreach from=$comments item=comment}
 			<p>
-				<strong>{l s="Comment" mod='commentsproduct_comment'} #{$comment.id}:</strong>
+				<strong>{l s="Comment" mod='commentsproduct'} #{$comment.id}:</strong>
 				{$comment.comment}<br>
-				<strong>{l s="Grade" mod='commentsproduct_comment'} :</strong> {$comment.grade}/5<br>
+				<strong>{l s="Grade" mod='commentsproduct'} :</strong> {$comment.grade}/5<br>
 			</p><br>
 		{/foreach}
 
