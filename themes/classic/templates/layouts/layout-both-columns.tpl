@@ -92,12 +92,6 @@
         {hook h="displayWrapperBottom"}
       </section>
 
-      <footer id="footer">
-        {block name="footer"}
-          {include file="_partials/footer.tpl"}
-        {/block}
-      </footer>
-
     </main>
 
     {block name='javascript_bottom'}
