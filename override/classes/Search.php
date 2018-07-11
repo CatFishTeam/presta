@@ -2,21 +2,6 @@
 class Search extends SearchCore
 {
     /*
-    * module: monmodule
-    * date: 2018-05-01 21:26:57
-    * version: 1.0
-    */
-    /*
-    * module: monmodule
-    * date: 2018-05-01 21:26:57
-    * version: 1.0
-    */
-    /*
-    * module: monmodule
-    * date: 2018-05-01 21:26:57
-    * version: 1.0
-    */
-    /*
     * module: commentsproduct
     * date: 2018-06-25 18:23:19
     * version: 0.1.0
