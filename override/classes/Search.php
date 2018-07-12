@@ -1,9 +1,20 @@
 <?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: robin
+ * Date: 13/06/18
+ * Time: 15:00
+ */
 class Search extends SearchCore
 {
     /*
     * module: commentsproduct
-    * date: 2018-06-25 18:23:19
+    * date: 2018-05-01 21:26:57
+    * version: 1.0
+    */
+    /*
+    * module: commentsproduct
+    * date: 2018-07-11 21:36:10
     * version: 0.1.0
     */
     public static function find($id_lang, $expr, $page_number = 1, $page_size = 1, $order_by = 'position', $order_way = 'desc', $ajax = false, $use_cookie = true, Context $context = null)
@@ -29,8 +40,6 @@ class Search extends SearchCore
             }
             $find['result'] = $produitsTrouves;
         }
-
-
         return $find; // retour de la valeur modifiée
     }
 }

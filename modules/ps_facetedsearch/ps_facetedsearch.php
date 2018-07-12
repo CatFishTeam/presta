@@ -85,6 +85,7 @@ class Ps_Facetedsearch extends Module implements WidgetInterface
             'afterSaveAttribute',
             'productSearchProvider',
             'displayLeftColumn',
+            'categoryFilters'
 
         ));
 
@@ -125,6 +126,11 @@ class Ps_Facetedsearch extends Module implements WidgetInterface
 
             return false;
         }
+    }
+
+    public function hookCategoryFilters($params)
+    {
+        return $this->fetch('module:ps_facetedsearch/ps_facetedsearch.tpl');
     }
 
     public function hookProductSearchProvider($params)

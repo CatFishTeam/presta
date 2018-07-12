@@ -24,9 +24,17 @@
  *}
 <nav class="pagination">
   <div class="col-md-4">
-    {block name='pagination_summary'}
-      {l s='Showing %from%-%to% of %total% item(s)' d='Shop.Theme.Catalog' sprintf=['%from%' => $pagination.items_shown_from ,'%to%' => $pagination.items_shown_to, '%total%' => $pagination.total_items]}
-    {/block}
+      <div class="hidden-sm-down total-products">
+          {if $listing.pagination.total_items > 1}
+              <p>{l s='There are %product_count% products.' d='Shop.Theme.Catalog' sprintf=['%product_count%' => $listing.pagination.total_items]}</p>
+          {else if $listing.pagination.total_items > 0}
+              <p>{l s='There is 1 product.' d='Shop.Theme.Catalog'}</p>
+          {/if}
+      </div>
+
+    {*{block name='pagination_summary'}*}
+      {*{l s='Showing %from%-%to% of %total% item(s)' d='Shop.Theme.Catalog' sprintf=['%from%' => $pagination.items_shown_from ,'%to%' => $pagination.items_shown_to, '%total%' => $pagination.total_items]}*}
+    {*{/block}*}
   </div>
 
   <div class="col-md-6 offset-md-2 pr-0">
