@@ -151,4 +151,22 @@ class ThemeConfigurator extends Module
             'THEME_COLUMN_NUMBER' => Tools::getValue('THEME_COLUMN_NUMBER', Configuration::get('THEME_COLUMN_NUMBER')),
         );
     }
+
+    public function hookDisplayHeader($params)
+    {
+        smartyRegisterFunction($this->context->smarty, 'function', 'Configuration', array($this, 'getConfiguration'));
+    }
+
+    public static function getConfiguration($params)
+    {
+        if ( isset($params['key'])) {
+            return Configuration::get($params['key'],
+                isset($params['id_lang']) ? $params['id_lang'] : null,
+                isset($params['id_shop_group']) ? $params['id_shop_group'] : null,
+                isset($params['id_shop']) ? $params['id_shop'] : null
+            );
+        } else {
+            return '';
+        }
+    }
 }

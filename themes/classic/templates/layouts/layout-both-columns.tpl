@@ -51,7 +51,7 @@
                     {include file='_partials/notifications.tpl'}
                 {/block}
 
-                <section id="wrapper">
+                <section id="wrapper" style="background-color: {Configuration key="THEME_BG_COLOR"}">
                     {hook h="displayWrapperTop"}
                     <div class="container">
                         {block name='breadcrumb'}
