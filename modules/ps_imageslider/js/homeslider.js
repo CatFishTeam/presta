@@ -25,13 +25,5 @@
 */
 
 $(document).ready(function(){
-    $('.rslides').slick({
-        infinite: true,
-        dots: true,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        fade: true,
-        cssEase: 'linear'
-    });
+    $('.rslides').slick();
 });

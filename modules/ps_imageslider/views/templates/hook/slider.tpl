@@ -23,13 +23,14 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
+{assign var='slickParams' value={ldelim}|cat:'"infinite": true, "dots": true, "autoplay": true, "slidesToShow": 1, "autoplaySpeed": '|cat:$homeslider.speed|cat:', "fade": '|cat:$homeslider.transition|cat:', "slidesToScroll": '|cat:$homeslider.direction|cat:', "cssEase": "linear"'|cat:{rdelim}}
 
 {if $homeslider.slides}
-  <div class="homeslider-container" data-interval="{$homeslider.speed}" data-wrap="{$homeslider.wrap}" data-pause="{$homeslider.pause}" data-direction="{$homeslider.direction}">
-    <div class="rslides">
-      {foreach from=$homeslider.slides item=slide}
-        <img src="{$slide.image_url}" alt="{$slide.legend|escape}" />
-      {/foreach}
+    <div class="homeslider-container" data-interval="{$homeslider.speed}" data-wrap="{$homeslider.wrap}" data-pause="{$homeslider.pause}" data-direction="{$homeslider.direction}">
+        <div class="rslides" data-slick='{$slickParams}'>
+            {foreach from=$homeslider.slides item=slide}
+                <img src="{$slide.image_url}" alt="{$slide.legend|escape}" />
+            {/foreach}
+        </div>
     </div>
-  </div>
 {/if}
