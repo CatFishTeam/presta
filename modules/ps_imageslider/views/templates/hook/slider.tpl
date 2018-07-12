@@ -25,21 +25,11 @@
 *}
 
 {if $homeslider.slides}
-  <div class="homeslider-container" data-interval="{$homeslider.speed}" data-wrap="{$homeslider.wrap}" data-pause="{$homeslider.pause}">
-    <ul class="rslides">
+  <div class="homeslider-container" data-interval="{$homeslider.speed}" data-wrap="{$homeslider.wrap}" data-pause="{$homeslider.pause}" data-direction="{$homeslider.direction}">
+    <div class="rslides">
       {foreach from=$homeslider.slides item=slide}
-        <li class="slide">
-          <a href="{$slide.url}">
-            <img src="{$slide.image_url}" alt="{$slide.legend|escape}" />
-            {if $slide.title || $slide.description }
-              <span class="caption">
-                <h2>{$slide.title}</h2>
-                <div>{$slide.description nofilter}</div>
-              </span>
-            {/if}
-          </a>
-        </li>
+        <img src="{$slide.image_url}" alt="{$slide.legend|escape}" />
       {/foreach}
-    </ul>
+    </div>
   </div>
 {/if}

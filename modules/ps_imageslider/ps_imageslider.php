@@ -43,6 +43,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
     protected $default_speed = 5000;
     protected $default_pause_on_hover = 1;
     protected $default_wrap = 1;
+    protected $default_direction = "right";
     protected $templateFile;
 
     public function __construct()
@@ -90,6 +91,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
                 $res = Configuration::updateValue('HOMESLIDER_SPEED', $this->default_speed, false, $shop_group_id, $shop_id);
                 $res &= Configuration::updateValue('HOMESLIDER_PAUSE_ON_HOVER', $this->default_pause_on_hover, false, $shop_group_id, $shop_id);
                 $res &= Configuration::updateValue('HOMESLIDER_WRAP', $this->default_wrap, false, $shop_group_id, $shop_id);
+                $res &= Configuration::updateValue('HOMESLIDER_DIRECTION', $this->default_direction, false, $shop_group_id, $shop_id);
             }
 
             /* Sets up Shop Group configuration */
@@ -98,6 +100,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
                     $res &= Configuration::updateValue('HOMESLIDER_SPEED', $this->default_speed, false, $shop_group_id);
                     $res &= Configuration::updateValue('HOMESLIDER_PAUSE_ON_HOVER', $this->default_pause_on_hover, false, $shop_group_id);
                     $res &= Configuration::updateValue('HOMESLIDER_WRAP', $this->default_wrap, false, $shop_group_id);
+                    $res &= Configuration::updateValue('HOMESLIDER_DIRECTION', $this->default_direction, false, $shop_group_id);
                 }
             }
 
@@ -105,6 +108,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
             $res &= Configuration::updateValue('HOMESLIDER_SPEED', $this->default_speed);
             $res &= Configuration::updateValue('HOMESLIDER_PAUSE_ON_HOVER', $this->default_pause_on_hover);
             $res &= Configuration::updateValue('HOMESLIDER_WRAP', $this->default_wrap);
+            $res &= Configuration::updateValue('HOMESLIDER_DIRECTION', $this->default_wrap);
 
             /* Creates tables */
             $res &= $this->createTables();
@@ -161,6 +165,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
             $res &= Configuration::deleteByName('HOMESLIDER_SPEED');
             $res &= Configuration::deleteByName('HOMESLIDER_PAUSE_ON_HOVER');
             $res &= Configuration::deleteByName('HOMESLIDER_WRAP');
+            $res &= Configuration::deleteByName('HOMESLIDER_DIRECTION');
 
             return (bool)$res;
         }
@@ -388,6 +393,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
                 $res = Configuration::updateValue('HOMESLIDER_SPEED', (int)Tools::getValue('HOMESLIDER_SPEED'), false, $shop_group_id, $shop_id);
                 $res &= Configuration::updateValue('HOMESLIDER_PAUSE_ON_HOVER', (int)Tools::getValue('HOMESLIDER_PAUSE_ON_HOVER'), false, $shop_group_id, $shop_id);
                 $res &= Configuration::updateValue('HOMESLIDER_WRAP', (int)Tools::getValue('HOMESLIDER_WRAP'), false, $shop_group_id, $shop_id);
+                $res &= Configuration::updateValue('HOMESLIDER_DIRECTION', Tools::getValue('HOMESLIDER_DIRECTION'), false, $shop_group_id, $shop_id);
             }
 
             /* Update global shop context if needed*/
@@ -396,11 +402,13 @@ class Ps_ImageSlider extends Module implements WidgetInterface
                     $res &= Configuration::updateValue('HOMESLIDER_SPEED', (int)Tools::getValue('HOMESLIDER_SPEED'));
                     $res &= Configuration::updateValue('HOMESLIDER_PAUSE_ON_HOVER', (int)Tools::getValue('HOMESLIDER_PAUSE_ON_HOVER'));
                     $res &= Configuration::updateValue('HOMESLIDER_WRAP', (int)Tools::getValue('HOMESLIDER_WRAP'));
+                    $res &= Configuration::updateValue('HOMESLIDER_DIRECTION', Tools::getValue('HOMESLIDER_DIRECTION'));
                     if (count($shop_groups_list)) {
                         foreach ($shop_groups_list as $shop_group_id) {
                             $res &= Configuration::updateValue('HOMESLIDER_SPEED', (int)Tools::getValue('HOMESLIDER_SPEED'), false, $shop_group_id);
                             $res &= Configuration::updateValue('HOMESLIDER_PAUSE_ON_HOVER', (int)Tools::getValue('HOMESLIDER_PAUSE_ON_HOVER'), false, $shop_group_id);
                             $res &= Configuration::updateValue('HOMESLIDER_WRAP', (int)Tools::getValue('HOMESLIDER_WRAP'), false, $shop_group_id);
+                            $res &= Configuration::updateValue('HOMESLIDER_DIRECTION', Tools::getValue('HOMESLIDER_DIRECTION'), false, $shop_group_id);
                         }
                     }
                     break;
@@ -410,6 +418,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
                             $res &= Configuration::updateValue('HOMESLIDER_SPEED', (int)Tools::getValue('HOMESLIDER_SPEED'), false, $shop_group_id);
                             $res &= Configuration::updateValue('HOMESLIDER_PAUSE_ON_HOVER', (int)Tools::getValue('HOMESLIDER_PAUSE_ON_HOVER'), false, $shop_group_id);
                             $res &= Configuration::updateValue('HOMESLIDER_WRAP', (int)Tools::getValue('HOMESLIDER_WRAP'), false, $shop_group_id);
+                            $res &= Configuration::updateValue('HOMESLIDER_DIRECTION', Tools::getValue('HOMESLIDER_DIRECTION'), false, $shop_group_id);
                         }
                     }
                     break;
@@ -525,12 +534,16 @@ class Ps_ImageSlider extends Module implements WidgetInterface
         }
     }
 
-    public function hookdisplayHeader($params)
+
+    public function hookDisplayHeader()
     {
-        $this->context->controller->registerStylesheet('modules-homeslider', 'modules/'.$this->name.'/css/homeslider.css', ['media' => 'all', 'priority' => 150]);
-        $this->context->controller->registerJavascript('modules-responsiveslides', 'modules/'.$this->name.'/js/responsiveslides.min.js', ['position' => 'bottom', 'priority' => 150]);
-        $this->context->controller->registerJavascript('modules-homeslider', 'modules/'.$this->name.'/js/homeslider.js', ['position' => 'bottom', 'priority' => 150]);
+        $this->context->controller->registerStylesheet('homeslider-css', 'modules/'.$this->name.'/slick/slick.css', ['media' => 'all', 'priority' => 150, 'attribute' => 'async']);
+        $this->context->controller->registerStylesheet('homeslider-theme', 'modules/'.$this->name.'/slick/slick-theme.css', ['media' => 'all', 'priority' => 150, 'attribute' => 'async']);
+
+        $this->context->controller->registerJavascript('homeslider-slick', 'modules/'.$this->name.'/slick/slick.min.js', ['position' => 'bottom', 'priority' => 150, 'attribute' => 'async']);
+        $this->context->controller->registerJavascript('homeslider-js', 'modules/'.$this->name.'/js/homeslider.js', ['position' => 'bottom', 'priority' => 150, 'attribute' => 'async']);
     }
+
 
     public function renderWidget($hookName = null, array $configuration = [])
     {
@@ -560,6 +573,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
                 'speed' => $config['HOMESLIDER_SPEED'],
                 'pause' => $config['HOMESLIDER_PAUSE_ON_HOVER'] ? 'hover' : '',
                 'wrap' => $config['HOMESLIDER_WRAP'] ? 'true' : 'false',
+                'direction' => $config['HOMESLIDER_DIRECTION'],
                 'slides' => $slides,
             ],
         ];
@@ -903,6 +917,24 @@ class Ps_ImageSlider extends Module implements WidgetInterface
                             )
                         ),
                     ),
+                    array(
+                        'type' => 'radio',
+                        'label' => $this->getTranslator()->trans('Sens des slides', array(), 'Modules.Imageslider.Admin'),
+                        'name' => 'HOMESLIDER_DIRECTION',
+                        'desc' => $this->getTranslator()->trans('Slide on left or right', array(), 'Modules.Imageslider.Admin'),
+                        'values' => array(
+                            array(
+                                'id' => 'left',
+                                'value' => 'left',
+                                'label' => $this->getTranslator()->trans('Left', array(), 'Modules.Imageslider.Admin')
+                            ),
+                            array(
+                                'id' => 'right',
+                                'value' => 'right',
+                                'label' => $this->getTranslator()->trans('Right', array(), 'Modules.Imageslider.Admin')
+                            )
+                        ),
+                    ),
                 ),
                 'submit' => array(
                     'title' => $this->getTranslator()->trans('Save', array(), 'Admin.Actions'),
@@ -940,6 +972,7 @@ class Ps_ImageSlider extends Module implements WidgetInterface
             'HOMESLIDER_SPEED' => Tools::getValue('HOMESLIDER_SPEED', Configuration::get('HOMESLIDER_SPEED', null, $id_shop_group, $id_shop)),
             'HOMESLIDER_PAUSE_ON_HOVER' => Tools::getValue('HOMESLIDER_PAUSE_ON_HOVER', Configuration::get('HOMESLIDER_PAUSE_ON_HOVER', null, $id_shop_group, $id_shop)),
             'HOMESLIDER_WRAP' => Tools::getValue('HOMESLIDER_WRAP', Configuration::get('HOMESLIDER_WRAP', null, $id_shop_group, $id_shop)),
+            'HOMESLIDER_DIRECTION' => Tools::getValue('HOMESLIDER_WDIRECTION', Configuration::get('HOMESLIDER_DIRECTION', null, $id_shop_group, $id_shop)),
         );
     }
 
