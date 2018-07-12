@@ -1,4 +1,4 @@
-{**
+/**
  * 2007-2017 PrestaShop
  *
  * NOTICE OF LICENSE
@@ -21,16 +21,29 @@
  * @copyright 2007-2017 PrestaShop SA
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
- *}
-{extends file='page.tpl'}
+ */
+import prestashop from 'prestashop';
+import $ from 'jquery';
 
-    {block name='page_content_container'}
-      <section id="content" class="page-home">
-        {block name='page_content_top'}{/block}
-        {block name='page_content'}
-          {block name='hook_home'}
-            {$HOOK_HOME nofilter}
-          {/block}
-        {/block}
-      </section>
-    {/block}
+prestashop.blockcart = prestashop.blockcart || {};
+
+prestashop.blockcart.showModal = (html) => {
+  function getBlockCartModal() {
+    return $('#blockcart-modal');
+  }
+
+  let $blockCartModal = getBlockCartModal();
+  if ($blockCartModal.length){
+    $blockCartModal.remove();
+  }
+
+  $('body').append(html);
+
+  $blockCartModal = getBlockCartModal();
+  $blockCartModal.modal('show').on('hidden.bs.modal', (event) => {
+    prestashop.emit('updateProduct', {
+      reason: event.currentTarget.dataset
+    });
+  });
+};
+

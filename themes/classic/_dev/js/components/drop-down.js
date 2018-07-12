@@ -1,4 +1,4 @@
-{**
+/**
  * 2007-2017 PrestaShop
  *
  * NOTICE OF LICENSE
@@ -21,16 +21,34 @@
  * @copyright 2007-2017 PrestaShop SA
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
- *}
-{extends file='page.tpl'}
+ */
+import $ from 'jquery';
 
-    {block name='page_content_container'}
-      <section id="content" class="page-home">
-        {block name='page_content_top'}{/block}
-        {block name='page_content'}
-          {block name='hook_home'}
-            {$HOOK_HOME nofilter}
-          {/block}
-        {/block}
-      </section>
-    {/block}
+export default class DropDown {
+  constructor(el) {
+    this.el = el;
+  }
+  init() {
+    this.el.on('show.bs.dropdown', function(e, el) {
+      if (el) {
+        $(`#${el}`).find('.dropdown-menu').first().stop(true, true).slideDown();
+      } else {
+        $(e.target).find('.dropdown-menu').first().stop(true, true).slideDown();
+      }
+    });
+
+    this.el.on('hide.bs.dropdown', function(e, el) {
+      if (el) {
+        $(`#${el}`).find('.dropdown-menu').first().stop(true, true).slideUp();
+      } else {
+        $(e.target).find('.dropdown-menu').first().stop(true, true).slideUp();
+      }
+    });
+
+    this.el.find('select.link').each(function(idx, el) {
+      $(el).on('change', function(event) {
+        window.location = $(this).val();
+      });
+    });
+  }
+}

@@ -1,4 +1,4 @@
-{**
+/**
  * 2007-2017 PrestaShop
  *
  * NOTICE OF LICENSE
@@ -21,16 +21,35 @@
  * @copyright 2007-2017 PrestaShop SA
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
- *}
-{extends file='page.tpl'}
+ */
+import $ from 'jquery';
 
-    {block name='page_content_container'}
-      <section id="content" class="page-home">
-        {block name='page_content_top'}{/block}
-        {block name='page_content'}
-          {block name='hook_home'}
-            {$HOOK_HOME nofilter}
-          {/block}
-        {/block}
-      </section>
-    {/block}
+export default class Form {
+  init(){
+    this.parentFocus();
+    this.togglePasswordVisibility();
+  }
+
+  parentFocus() {
+    $('.js-child-focus').focus(function () {
+      $(this).closest('.js-parent-focus').addClass('focus');
+    });
+    $('.js-child-focus').focusout(function () {
+      $(this).closest('.js-parent-focus').removeClass('focus');
+    });
+  }
+
+  togglePasswordVisibility() {
+    $('button[data-action="show-password"]').on('click', function () {
+      var elm = $(this).closest('.input-group').children('input.js-visible-password');
+      if (elm.attr('type') === 'password') {
+        elm.attr('type', 'text');
+        $(this).text($(this).data('textHide'));
+      } else {
+        elm.attr('type', 'password');
+        $(this).text($(this).data('textShow'));
+      }
+
+    });
+  }
+}
