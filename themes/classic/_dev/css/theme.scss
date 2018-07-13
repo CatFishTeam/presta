@@ -1,4 +1,4 @@
-@import "~bourbon/app/assets/stylesheets/bourbon";
+
 @import "partials/_variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css";
@@ -27,6 +27,9 @@
 @import "components/errors";
 @import "components/customization-modal";
 @import "components/sitemap";
+
+@import "components/navbar";
+
 /*** HEADER ***/
 #header {
   background: white;
