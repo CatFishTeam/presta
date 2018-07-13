@@ -83,6 +83,7 @@
   }
   .qty {
     margin-right: 0.4rem;
+    margin-bottom: 2rem;
   }
   #quantity_wanted {
     color: $gray-darker;
@@ -134,8 +135,10 @@
   }
 }
 .product-prices {
-  margin-top: $medium-space;
-
+  margin-top: $large-space;
+  border-top: lightgray 1px solid;
+  border-bottom: lightgray 1px solid;
+  margin-bottom: $large-space;
   div {
     margin-bottom: 0.625rem;
   }
@@ -182,37 +185,38 @@
   margin-bottom: 0;
 }
 .tabs {
-  @include box-shadow;
   margin-top: 2rem;
   background: white;
-  padding: $medium-space $large-space;
+  padding: $medium-space 0;
   .tab-pane {
     padding-top: $medium-space;
+    margin: $large-space 7rem;
+    line-height: 2;
   }
   .nav-tabs {
     border: none;
-    border-bottom: $gray-light 2px solid;
+    border-bottom: $gray-light 1px solid;
     .nav-link {
       color: $gray;
       border: 0 solid transparent;
       &.active {
         border: none;
-        border-bottom: $brand-primary 3px solid;
         color: $brand-primary;
       }
       &:hover {
         border: none;
-        border-bottom: $brand-primary 3px solid;
       }
     }
     .nav-item {
       float: left;
-      margin-bottom: -0.125rem;
+      margin-bottom: 0.5rem;
+      margin-left: 21%;
+      margin-right: 14%;
     }
   }
 }
 .product-cover {
-  margin-bottom: $medium-space;
+  margin-bottom: 2.5rem;
   position: relative;
   img {
     @include box-shadow;
@@ -368,7 +372,6 @@
   > li.thumb-container {
     display: inline;
     > .thumb {
-      @include box-shadow;
       cursor: pointer;
       margin-bottom: $small-space;
       .images-container & {
@@ -376,7 +379,7 @@
       }
       &.selected,
       &:hover {
-        border: $brand-primary 3px solid;
+        opacity: 0.5;
       }
     }
   }
@@ -467,10 +470,14 @@
       background-color: white;
       width: auto;
       padding-right: 1.875rem;
-      @include box-shadow-light;
     }
     ul li {
       margin-right: $small-space;
+    }
+    ul li label span{
+      border-radius: 20px;
+      height: 30px;
+      width: 30px;
     }
     .color {
       margin-left: 0;
@@ -607,12 +614,9 @@ li.product-flag {
     margin-bottom: 0;
   }
   li {
-    @include box-shadow-light;
     height: 2.5rem;
     width: 2.5rem;
-    border-radius: 50%;
     display: inline-block;
-    background-color: white;
     background-repeat: no-repeat;
     background-size: 2rem 2rem;
     background-position: 0.25rem 0.25rem;
@@ -680,5 +684,13 @@ li.product-flag {
     .modal-body {
       padding: 1rem;
     }
+  }
+}
+
+.bullshit-white{
+  background-color: white;
+  padding: $large-space;
+  p, .product-prices .tax-shipping-delivery-label {
+    color: black;
   }
 }

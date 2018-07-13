@@ -73,6 +73,7 @@
                 </section>
             </section>
         </div>
+
     </main>
 
     {block name='javascript_bottom'}

@@ -228,7 +228,6 @@ input, textarea {
   width: auto;
   float: left;
   display: inline-block;
-  @include box-shadow-light;
   input {
     &:focus {
       outline: none;
@@ -255,12 +254,16 @@ input, textarea {
   }
   .input-group-btn-vertical {
     color: $gray-darker;
+    margin-left: 0.5rem;
+
     width: auto;
     float: left;
     .bootstrap-touchspin-up {
       border-radius: 0;
+      background-color: #e0e0e0;
     }
     .bootstrap-touchspin-down {
+      background-color: #e0e0e0;
       border-radius: 0;
     }
     .touchspin-up {
