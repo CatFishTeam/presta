@@ -2,3 +2,30 @@
  * Custom code goes here.
  * A template should always ship with an empty custom.css
  */
+
+#_desktop_language_selector, #_desktop_currency_selector {
+    display: inline-block;
+    width: 49%;
+}
+
+#_desktop_logo .logo.img-responsive {
+    width: 100%;
+}
+
+.block-social {
+    text-align: center;
+}
+
+#index .tabs {padding:0px}
+#index #home-page-tabs {margin:0px 10px; padding:10px 0px 0px 0px;}
+
+
+#home-page-tabs {
+    display: inline-flex;
+}
+
+#home-page-tabs  > li{
+    margin-left: 0;
+    margin-right: 0;
+    float: unset;
+}

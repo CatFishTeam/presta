@@ -25,6 +25,7 @@
 {extends file='catalog/listing/product-list.tpl'}
 
 {block name='product_list_header'}
+    {hook h='displayLeftColumn'}
     <div class="block-category card card-block hidden-sm-down">
       <h1 class="h1">{$category.name}</h1>
       {if $category.description}

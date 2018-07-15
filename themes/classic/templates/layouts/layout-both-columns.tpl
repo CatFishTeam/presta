@@ -39,10 +39,10 @@
 
     <main class="container-fluid">
         <div class="row">
-            <aside class="col-3">
-                {include file='_partials/navbar.tpl'}
+            <aside class="col-2">
+                {include file='_partials/header.tpl'}
             </aside>
-            <section class="col-9">
+            <section class="col-10">
                 {block name='product_activation'}
                     {include file='catalog/_partials/product-activation.tpl'}
                 {/block}
@@ -69,7 +69,11 @@
                         {/block}
 
                     </div>
-                    {hook h="displayWrapperBottom"}
+                    <div id="footer">
+                        <hr>
+                        {hook h="displayWrapperBottom"}
+                        <hr>
+                    </div>
                 </section>
             </section>
         </div>
