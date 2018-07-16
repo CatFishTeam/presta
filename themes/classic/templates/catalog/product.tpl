@@ -76,6 +76,9 @@
         {/block}
         </div>
         <div class="col-md-4 bullshit-white">
+            {block name='breadcrumb'}
+                {include file='_partials/breadcrumb.tpl'}
+            {/block}
           {block name='page_header_container'}
             {block name='page_header'}
               <h1 class="h1" itemprop="name">{block name='page_title'}{$product.name}{/block}</h1>

@@ -24,7 +24,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-{assign var='slickParams' value={ldelim}|cat:'"infinite": true, "dots": true, "autoplay": true, "slidesToShow": 1, "autoplaySpeed": '|cat:$homeslider.speed|cat:', "fade": '|cat:$homeslider.transition|cat:', "slidesToScroll": '|cat:$homeslider.direction|cat:', "cssEase": "linear"'|cat:{rdelim}}
+{assign var='slickParams' value={ldelim}|cat:'"infinite": true, "autoplay": true, "slidesToShow": 1, "autoplaySpeed": '|cat:$homeslider.speed|cat:', "fade": '|cat:$homeslider.transition|cat:', "slidesToScroll": '|cat:$homeslider.direction|cat:', "cssEase": "linear"'|cat:{rdelim}}
 
 {if $homeslider.slides}
   <div class="homeslider-container" data-interval="{$homeslider.speed}" data-wrap="{$homeslider.wrap}" data-pause="{$homeslider.pause}" data-direction="{$homeslider.direction}">
