@@ -30,7 +30,17 @@
   <div class="homeslider-container" data-interval="{$homeslider.speed}" data-wrap="{$homeslider.wrap}" data-pause="{$homeslider.pause}" data-direction="{$homeslider.direction}">
     <div class="rslides" data-slick='{$slickParams}'>
       {foreach from=$homeslider.slides item=slide}
-        <img src="{$slide.image_url}" alt="{$slide.legend|escape}" />
+          <div>
+            <img src="{$slide.image_url}" alt="{$slide.title|escape}" />
+            <div class="slide-text">
+                <p>{$slide.legend}</p>
+                <h2>{$slide.title}</h2>
+                {$slide.description nofilter}
+                <a href="{$slide.url}" class="btn btn-dark">
+                    ACHETER <i class="material-icons">arrow_right_alt</i>
+                </a>
+            </div>
+          </div>
       {/foreach}
     </div>
   </div>

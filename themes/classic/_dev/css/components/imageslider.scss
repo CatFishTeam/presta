@@ -73,3 +73,18 @@
     }
   }
 }
+
+.slick-slide {
+  position: relative;
+  .slide-text {
+    max-width: 274px;
+    margin-right: 10%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(0,50%);
+    h2 {
+      text-transform: uppercase;
+    }
+  }
+}

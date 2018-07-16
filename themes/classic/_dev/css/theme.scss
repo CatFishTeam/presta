@@ -170,7 +170,6 @@
 /*** WRAPPER ***/
 #wrapper {
   background: $gray-light;
-  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.11);
   padding-top: 1.563rem;
   .banner {
     margin-bottom: 1.5rem;
@@ -238,14 +237,29 @@
     padding: 0px;
   }
   #home-page-tabs {
-    margin: 0px 10px;
-    padding: 10px 0px 0px 0px;
     display: inline-flex;
+    width: 100%;
+    border-top: solid 1px #cccccc;
+    border-bottom: solid 1px #cccccc;
+    padding: 0;
+    margin: 0;
 
     & > li {
       margin-left: 0;
       margin-right: 0;
+      margin-bottom: 0;
       float: unset;
+      display: inline-block;
+      width: 25%;
+      text-align: center;
+      border-left: solid 1px #cccccc;
+      border-right: solid 1px #cccccc;
+
+      .nav-link.active {
+        background-color: unset;
+        font-weight: bold;
+        color: black;
+      }
     }
   }
 }

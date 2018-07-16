@@ -42,7 +42,7 @@
             <aside class="col-2" id="navbar">
                 {include file='_partials/header.tpl'}
             </aside>
-            <section class="col-10">
+            <section class="col-10" style="background-color: {Configuration::get("THEME_BG_COLOR")}; padding: 0;">
                 {block name='product_activation'}
                     {include file='catalog/_partials/product-activation.tpl'}
                 {/block}
@@ -51,9 +51,9 @@
                     {include file='_partials/notifications.tpl'}
                 {/block}
 
-                <section id="wrapper" style="background-color: {Configuration::get("THEME_BG_COLOR")}">
+                <section id="wrapper">
                     {hook h="displayWrapperTop"}
-                    <div class="container">
+                    <div class="">
                         {block name='breadcrumb'}
                             {include file='_partials/breadcrumb.tpl'}
                         {/block}
