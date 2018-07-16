@@ -31,9 +31,7 @@ class ThemeConfigurator extends Module
         $res = true;
 
         /* Adds Module */
-        if (parent::install() &&
-            $this->registerHook('displayHeader')
-        ) {
+        if (parent::install()) {
 
             /* Sets up Global configuration */
             $res &= Configuration::updateValue('THEME_BG_COLOR', $this->default_color);
@@ -150,23 +148,5 @@ class ThemeConfigurator extends Module
             'THEME_BG_COLOR' => Tools::getValue('THEME_BG_COLOR', Configuration::get('THEME_BG_COLOR')),
             'THEME_COLUMN_NUMBER' => Tools::getValue('THEME_COLUMN_NUMBER', Configuration::get('THEME_COLUMN_NUMBER')),
         );
-    }
-
-    public function hookDisplayHeader($params)
-    {
-        smartyRegisterFunction($this->context->smarty, 'function', 'Configuration', array($this, 'getConfiguration'));
-    }
-
-    public static function getConfiguration($params)
-    {
-        if ( isset($params['key'])) {
-            return Configuration::get($params['key'],
-                isset($params['id_lang']) ? $params['id_lang'] : null,
-                isset($params['id_shop_group']) ? $params['id_shop_group'] : null,
-                isset($params['id_shop']) ? $params['id_shop'] : null
-            );
-        } else {
-            return '';
-        }
     }
 }

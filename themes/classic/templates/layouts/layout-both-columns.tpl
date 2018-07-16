@@ -39,7 +39,7 @@
 
     <main class="container-fluid">
         <div class="row">
-            <aside class="col-2">
+            <aside class="col-2" id="navbar">
                 {include file='_partials/header.tpl'}
             </aside>
             <section class="col-10">
@@ -51,7 +51,7 @@
                     {include file='_partials/notifications.tpl'}
                 {/block}
 
-                <section id="wrapper" style="background-color: {Configuration key="THEME_BG_COLOR"}">
+                <section id="wrapper" style="background-color: {Configuration::get("THEME_BG_COLOR")}">
                     {hook h="displayWrapperTop"}
                     <div class="container">
                         {block name='breadcrumb'}

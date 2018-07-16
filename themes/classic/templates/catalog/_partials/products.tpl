@@ -22,23 +22,35 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
+
 <div id="js-product-list">
-  <div class="products row">
-    {foreach from=$listing.products item="product"}
-      {block name='product_miniature'}
-        {include file='catalog/_partials/miniatures/product.tpl' product=$product}
-      {/block}
-    {/foreach}
-  </div>
+    <div class="products">
+        {assign var="count" value=0}
+        {foreach from=$listing.products item="product"}
+            {if $count%Configuration::get('THEME_COLUMN_NUMBER') == 0 && $count == 0}
+                <div class="row">
+            {/if}
+            {if $count%Configuration::get('THEME_COLUMN_NUMBER') == 0 && $count != 0}
+            </div><div class="row">
+            {/if}
+            <div class="col">
+                {block name='product_miniature'}
+                    {include file='catalog/_partials/miniatures/product.tpl' product=$product}
+                {/block}
+            </div>
+            {assign var=count value=$count+1}
+        {/foreach}
+        </div>
+    </div>
 
-  {block name='pagination'}
-    {include file='_partials/pagination.tpl' pagination=$listing.pagination}
-  {/block}
+    {block name='pagination'}
+        {include file='_partials/pagination.tpl' pagination=$listing.pagination}
+    {/block}
 
-  <div class="hidden-md-up text-xs-right up">
-    <a href="#header" class="btn btn-secondary">
-      {l s='Back to top' d='Shop.Theme.Actions'}
-      <i class="material-icons">&#xE316;</i>
-    </a>
-  </div>
+    <div class="hidden-md-up text-xs-right up">
+        <a href="#header" class="btn btn-secondary">
+            {l s='Back to top' d='Shop.Theme.Actions'}
+            <i class="material-icons">&#xE316;</i>
+        </a>
+    </div>
 </div>

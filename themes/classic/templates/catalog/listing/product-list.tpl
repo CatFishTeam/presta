@@ -34,7 +34,7 @@
     <section id="products">
       {if $listing.products|count}
 
-        <div id="">
+        <div>
           {block name='product_list_top'}
             {include file='catalog/_partials/products-top.tpl' listing=$listing}
           {/block}
