@@ -43,7 +43,6 @@
     display: none;
     ul[data-depth="1"] > li {
       float: left;
-      margin: 0 1.25rem;
     }
     a:hover {
       color: $brand-primary;

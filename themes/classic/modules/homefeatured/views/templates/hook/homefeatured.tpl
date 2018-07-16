@@ -28,6 +28,4 @@
             {assign var=count value=$count+1}
             {/foreach}
         </div>
-        <a class="all-product-link pull-xs-left pull-md-right"
-           href="{$allProductsLink}">{l s='All products' mod='homefeatured'}<i class="material-icons">&#xE315;</i></a>
 </section>

@@ -24,13 +24,12 @@
     margin-bottom: 1.563rem;
     margin-left: auto;
     margin-right: auto;
-    height: 318px;
+    height: 250px;
     width: 247px;
-    background: white;
-    @include box-shadow;
+    overflow: hidden;
     &:hover, &:focus {
       .highlighted-informations {
-        bottom: 5.5rem;
+        bottom: 0;
         &::after {
           opacity: 1;
         }
@@ -74,15 +73,15 @@
   }
   .highlighted-informations {
     position: absolute;
-    bottom: 1.25rem;
+    bottom: -250px;
     padding-top: 0.625rem;
     z-index: 0;
-    background: white;
+    background-color: rgba(240, 240, 240, 0.5);
     text-align: center;
     width: 247px;
-    height: 3.125rem;
-    box-shadow: 0 -5px 10px -5px rgba(0, 0, 0, 0.2);
+    height: 250px;
     transition: bottom .3s;
+    color: black;
     .quick-view {
       color: $gray;
       font-size: $base-font-size;

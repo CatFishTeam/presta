@@ -62,4 +62,10 @@
     margin-top: 0;
     margin-left: $extra-large-space;
   }
+
+  .product-quantity, .add {
+    display: inline-block;
+    float: left;
+  }
+
 }

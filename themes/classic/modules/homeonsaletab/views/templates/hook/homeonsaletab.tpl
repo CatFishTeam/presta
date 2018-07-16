@@ -36,5 +36,4 @@
             </div>
         {/if}
     </div>
-    <a class="all-product-link pull-xs-left pull-md-right" href="{$allonsaleProductsLink}">{l s='All promotions' mod='homeonsaletab'}<i class="material-icons">&#xE315;</i></a>
 </section>
