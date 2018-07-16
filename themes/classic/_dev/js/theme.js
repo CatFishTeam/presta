@@ -67,3 +67,11 @@ $(document).ready(() => {
   productMinitature.init();
   productSelect.init();
 });
+
+$("#search_widget_toggle").click(function () {
+    $("#search_widget").toggle();
+})
+
+$(document).ready(function(){
+    $('#home-page-tabs li:first a, #tab-content .tab-pane:first').addClass('active in show');
+});
