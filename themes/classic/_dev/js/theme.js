@@ -33,6 +33,7 @@ import './customer';
 import './listing';
 import './product';
 import './cart';
+import './navbar';
 
 import DropDown from './components/drop-down';
 import Form from './components/form';
