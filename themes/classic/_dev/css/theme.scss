@@ -170,7 +170,6 @@
 /*** WRAPPER ***/
 #wrapper {
   background: $gray-light;
-  padding-top: 1.563rem;
   .banner {
     margin-bottom: 1.5rem;
     display: block;
@@ -436,6 +435,11 @@
   }
 }
 
+.featured-products{
+  h2{
+    text-align: center;
+  }
+}
 @include media-breakpoint-down(xs) {
   #left-column, #content-wrapper {
     padding-left: 0 !important;

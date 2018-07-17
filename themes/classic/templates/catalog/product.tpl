@@ -51,7 +51,7 @@
     <meta itemprop="url" content="{$product.url}">
 
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-6">
         {block name='page_content_container'}
           <section class="page-content" id="content">
             {block name='page_content'}
@@ -75,7 +75,8 @@
           </section>
         {/block}
         </div>
-        <div class="col-md-4 bullshit-white">
+        <div class="col-md-6 margin-auto">
+            <div class="bullshit-white">
             {block name='breadcrumb'}
                 {include file='_partials/breadcrumb.tpl'}
             {/block}
@@ -144,6 +145,7 @@
             </div>
 
 
+          </div>
         </div>
       </div>
     </div>
