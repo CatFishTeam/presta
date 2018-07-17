@@ -28,6 +28,10 @@
     <h1 class="h1">{$category.name}</h1>
 </div>
 
+<div class="show-filters">
+    <button>FILTRER</button>
+</div>
+
 {if isset($listing.rendered_facets)}
 <div id="search_filters_wrapper" class="hidden-sm-down">
   <div id="search_filter_controls" class="hidden-md-up">

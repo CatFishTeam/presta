@@ -155,13 +155,38 @@
   display: none;
 }
 
+.show-filters {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  button {
+    background-color: #487791;
+    border: 0;
+    padding: 15px 25px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+#search_filters {
+  display: none;
+}
+
+#search_filters_brands,
+#search_filters_suppliers {
+  display: flex;
+}
+
 #search_filters,
 #search_filters_brands,
 #search_filters_suppliers {
   text-transform: uppercase;
-  display: flex;
   margin-bottom: 1.563rem;
   padding: 1.563rem 1.25rem;
+
   h4, #_desktop_search_filters_clear_all {
     display: none;
   }
@@ -171,7 +196,15 @@
   }
 
   .facet {
-    margin-right: 50px;
+    margin-right: 70px;
+
+    &:nth-child(4) {
+      ul {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
     h1 {
       font-weight: 100;
       color: #666566;
