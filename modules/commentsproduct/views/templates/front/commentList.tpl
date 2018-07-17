@@ -2,7 +2,6 @@
 
 {block name='page_content'}
 
-    {debug}
     {foreach from=$comments item=comment}
     <p>
         <strong>{l s="Comment" mod='commentsproduct'} #{$comment.id}:</strong>
