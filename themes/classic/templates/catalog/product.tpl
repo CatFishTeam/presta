@@ -202,7 +202,7 @@
                     {/foreach}
                 </ul>
 
-                <div class="tab-content" id="tab-content">
+                <div class="tab-content-product" id="tab-content">
                     <div class="tab-pane fade in{if $product.description} active{/if}" id="description" role="tabpanel">
                         {block name='product_description'}
                             <div class="product-description">{$product.description nofilter}</div>

@@ -456,10 +456,7 @@ nav {
   width: 90%;
   margin: auto;
   margin-top: 50px;
-}
 
-.tab-content-product {
-  padding: 50px;
   .nav-tabs {
     .nav-item {
       float: unset;
@@ -472,4 +469,8 @@ nav {
       border-left: 1px solid #ccc
     }
   }
+}
+
+.tab-content-product {
+  padding: 50px;
 }
