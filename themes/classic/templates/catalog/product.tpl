@@ -46,11 +46,12 @@
 {/block}
 
 {block name='content'}
+
     <section id="main" itemscope itemtype="https://schema.org/Product">
         <meta itemprop="url" content="{$product.url}">
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 {block name='page_content_container'}
                     <section class="page-content" id="content">
                         {block name='page_content'}
@@ -69,92 +70,95 @@
                                 <i class="material-icons left">&#xE314;</i>
                                 <i class="material-icons right">&#xE315;</i>
                             </div>
+
                         {/block}
                     </section>
                 {/block}
             </div>
-            <div class="col-md-4 bullshit-white">
-                {block name='breadcrumb'}
-                    {include file='_partials/breadcrumb.tpl'}
-                {/block}
-                {block name='page_header_container'}
-                    {block name='page_header'}
-                        <h1 class="h1" itemprop="name">{block name='page_title'}{$product.name}{/block}</h1>
+            <div class="col-md-6 margin-auto">
+                <div class="bullshit-white">
+                    {block name='breadcrumb'}
+                        {include file='_partials/breadcrumb.tpl'}
                     {/block}
-                {/block}
-                {block name='product_prices'}
-                    {include file='catalog/_partials/product-prices.tpl'}
-                {/block}
-
-                <div class="product-information">
-                    {block name='product_description_short'}
-                        <div id="product-description-short-{$product.id}"
-                             itemprop="description">{$product.description_short nofilter}</div>
+                    {block name='page_header_container'}
+                        {block name='page_header'}
+                            <h1 class="h1" itemprop="name">{block name='page_title'}{$product.name}{/block}</h1>
+                        {/block}
+                    {/block}
+                    {block name='product_prices'}
+                        {include file='catalog/_partials/product-prices.tpl'}
                     {/block}
 
-                    {if $product.is_customizable && count($product.customizations.fields)}
-                        {block name='product_customization'}
-                            {include file="catalog/_partials/product-customization.tpl" customizations=$product.customizations}
-                        {/block}
-                    {/if}
-
-                    <div class="product-actions">
-                        {block name='product_buy'}
-                            <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
-                                <input type="hidden" name="token" value="{$static_token}">
-                                <input type="hidden" name="id_product" value="{$product.id}"
-                                       id="product_page_product_id">
-                                <input type="hidden" name="id_customization" value="{$product.id_customization}"
-                                       id="product_customization_id">
-
-                                {block name='product_variants'}
-                                    {include file='catalog/_partials/product-variants.tpl'}
-                                {/block}
-
-                                {block name='product_pack'}
-                                    {if $packItems}
-                                        <section class="product-pack">
-                                            <h3 class="h4">{l s='This pack contains' d='Shop.Theme.Catalog'}</h3>
-                                            {foreach from=$packItems item="product_pack"}
-                                                {block name='product_miniature'}
-                                                    {include file='catalog/_partials/miniatures/pack-product.tpl' product=$product_pack}
-                                                {/block}
-                                            {/foreach}
-                                        </section>
-                                    {/if}
-                                {/block}
-
-                                {block name='product_discounts'}
-                                    {include file='catalog/_partials/product-discounts.tpl'}
-                                {/block}
-
-                                {block name='product_add_to_cart'}
-                                    {include file='catalog/_partials/product-add-to-cart.tpl'}
-                                {/block}
-
-                                {block name='product_additional_info'}
-                                    {include file='catalog/_partials/product-additional-info.tpl'}
-                                {/block}
-
-                                {block name='product_refresh'}
-                                    <input class="product-refresh ps-hidden-by-js" name="refresh" type="submit"
-                                           value="{l s='Refresh' d='Shop.Theme.Actions'}">
-                                {/block}
-                            </form>
+                    <div class="product-information">
+                        {block name='product_description_short'}
+                            <div id="product-description-short-{$product.id}" itemprop="description">{$product.description_short nofilter}</div>
                         {/block}
 
-                        {block name='hook_reassurance'}
-                            {hook h='displayReassurance'}
-                        {/block}
+                        {if $product.is_customizable && count($product.customizations.fields)}
+                            {block name='product_customization'}
+                                {include file="catalog/_partials/product-customization.tpl" customizations=$product.customizations}
+                            {/block}
+                        {/if}
+
+                        <div class="product-actions">
+                            {block name='product_buy'}
+                                <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
+                                    <input type="hidden" name="token" value="{$static_token}">
+                                    <input type="hidden" name="id_product" value="{$product.id}" id="product_page_product_id">
+                                    <input type="hidden" name="id_customization" value="{$product.id_customization}" id="product_customization_id">
+
+                                    {block name='product_variants'}
+                                        {include file='catalog/_partials/product-variants.tpl'}
+                                    {/block}
+
+                                    {block name='product_pack'}
+                                        {if $packItems}
+                                            <section class="product-pack">
+                                                <h3 class="h4">{l s='This pack contains' d='Shop.Theme.Catalog'}</h3>
+                                                {foreach from=$packItems item="product_pack"}
+                                                    {block name='product_miniature'}
+                                                        {include file='catalog/_partials/miniatures/pack-product.tpl' product=$product_pack}
+                                                    {/block}
+                                                {/foreach}
+                                            </section>
+                                        {/if}
+                                    {/block}
+
+                                    {block name='product_discounts'}
+                                        {include file='catalog/_partials/product-discounts.tpl'}
+                                    {/block}
+
+                                    {block name='product_add_to_cart'}
+                                        {include file='catalog/_partials/product-add-to-cart.tpl'}
+                                    {/block}
+
+                                    {block name='product_additional_info'}
+                                        {include file='catalog/_partials/product-additional-info.tpl'}
+                                    {/block}
+
+                                    {block name='product_refresh'}
+                                        <input class="product-refresh ps-hidden-by-js" name="refresh" type="submit" value="{l s='Refresh' d='Shop.Theme.Actions'}">
+                                    {/block}
+                                </form>
+                            {/block}
+
+                            {block name='hook_reassurance'}
+                                {hook h='displayReassurance'}
+                            {/block}
+
+                        </div>
+
+
                     </div>
-
                 </div>
             </div>
         </div>
 
 
+
+
         {block name='product_tabs'}
-            <div class="tabs tabs-product">
+            <div class="tabs-product">
                 <ul class="nav nav-tabs" role="tablist">
                     {if $product.description}
                         <li class="nav-item">
@@ -186,7 +190,7 @@
                                     aria-controls="attachments">{l s='Attachments' d='Shop.Theme.Catalog'}</a>
                         </li>
                     {/if}
-                    {foreach from=$product.extraContent item=extra key=extraKey}F
+                    {foreach from=$product.extraContent item=extra key=extraKey}
                         <li class="nav-item">
                             <a
                                     class="nav-link"
@@ -198,7 +202,7 @@
                     {/foreach}
                 </ul>
 
-                <div class="tab-content-product" id="tab-content">
+                <div class="tab-content" id="tab-content">
                     <div class="tab-pane fade in{if $product.description} active{/if}" id="description" role="tabpanel">
                         {block name='product_description'}
                             <div class="product-description">{$product.description nofilter}</div>
@@ -216,13 +220,10 @@
                                     <h3 class="h5 text-uppercase">{l s='Download' d='Shop.Theme.Actions'}</h3>
                                     {foreach from=$product.attachments item=attachment}
                                         <div class="attachment">
-                                            <h4>
-                                                <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">{$attachment.name}</a>
-                                            </h4>
+                                            <h4><a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">{$attachment.name}</a></h4>
                                             <p>{$attachment.description}</p
                                             <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">
-                                                {l s='Download' d='Shop.Theme.Actions'}
-                                                ({$attachment.file_size_formatted})
+                                                {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
                                             </a>
                                         </div>
                                     {/foreach}
@@ -232,8 +233,7 @@
                     {/block}
 
                     {foreach from=$product.extraContent item=extra key=extraKey}
-                    <div class="tab-pane fade in {$extra.attr.class}" id="extra-{$extraKey}"
-                         role="tabpanel" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
+                    <div class="tab-pane fade in {$extra.attr.class}" id="extra-{$extraKey}" role="tabpanel" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
                     {$extra.content nofilter}
                 </div>
                 {/foreach}
@@ -275,4 +275,5 @@
             </footer>
         {/block}
     </section>
+
 {/block}
