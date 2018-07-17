@@ -26,9 +26,6 @@
 
 {block name='product_list_header'}
     {hook h='displayLeftColumn'}
-    <div class="text-sm-center">
-      <h1 class="h1">{$category.name}</h1>
-    </div>
 
     {if isset($subcategories)}
         <!-- Subcategories -->

@@ -22,6 +22,12 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
+
+
+<div class="text-sm-center mt-4">
+    <h1 class="h1">{$category.name}</h1>
+</div>
+
 {if isset($listing.rendered_facets)}
 <div id="search_filters_wrapper" class="hidden-sm-down">
   <div id="search_filter_controls" class="hidden-md-up">

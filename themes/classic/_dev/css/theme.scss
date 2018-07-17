@@ -28,6 +28,10 @@
 @import "components/sitemap";
 @import "components/navbar";
 
+* {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
 /*** HEADER ***/
 #header {
   background: white;
