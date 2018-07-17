@@ -446,3 +446,29 @@
 nav {
   position: relative !important;
 }
+
+.tabs-product {
+  background: white;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.tab-content-product {
+  padding: 50px;
+}
+
+.tabs {
+  .nav-tabs {
+    .nav-item {
+      float: unset;
+      margin: 0;
+      text-align: center;
+      width: 50%;
+    }
+
+    .nav-item:last-child {
+      border-left: 1px solid #ccc
+    }
+  }
+}
