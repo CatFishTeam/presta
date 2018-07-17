@@ -7,7 +7,10 @@ $(document).ready(function () {
         $(this).children('div').toggle();
     })
     */
+    $('.dropdown-item').next('div').hide()
+    $('.dropdown-item').attr('href', '#')
     $('.dropdown-item').on('click', function() {
         $(this).next('div').toggle();
     })
+
 });
