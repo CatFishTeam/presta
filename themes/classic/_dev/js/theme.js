@@ -76,3 +76,8 @@ $("#search_widget_toggle").click(function () {
 $(document).ready(function(){
     $('#home-page-tabs li:first a, #tab-content .tab-pane:first').addClass('active in show');
 });
+
+$('.show-filters').click(function (e) {
+   if ($('#search_filters').css('display') == 'none') $('#search_filters').css('display', 'flex');
+   else $('#search_filters').css('display', 'none');
+});
